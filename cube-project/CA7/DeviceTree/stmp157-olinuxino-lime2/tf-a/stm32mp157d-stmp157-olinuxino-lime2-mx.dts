@@ -151,6 +151,19 @@
 		};
 	};
 
+	uart4_pins_mx: uart4_mx-0 {
+		pins1 {
+			pinmux = <STM32_PINMUX('B', 2, AF8)>; /* UART4_RX */
+			bias-disable;
+		};
+		pins2 {
+			pinmux = <STM32_PINMUX('G', 11, AF6)>; /* UART4_TX */
+			bias-disable;
+			drive-push-pull;
+			slew-rate = <0>;
+		};
+	};
+
 	/* USER CODE BEGIN pinctrl */
 	/* USER CODE END pinctrl */
 };
@@ -210,6 +223,7 @@
 		CLK_SDMMC12_PLL4P
 		CLK_STGEN_HSI
 		CLK_I2C46_PLL3Q
+		CLK_UART24_PCLK1
 		CLK_MPU_PLL1P
 		CLK_AXI_PLL2P
 		CLK_MCU_PLL3P
@@ -306,6 +320,15 @@
 
 	/* USER CODE BEGIN sdmmc2 */
 	/* USER CODE END sdmmc2 */
+};
+
+&uart4{
+	pinctrl-names = "default";
+	pinctrl-0 = <&uart4_pins_mx>;
+	status = "okay";
+
+	/* USER CODE BEGIN uart4 */
+	/* USER CODE END uart4 */
 };
 
 /* USER CODE BEGIN addons */
